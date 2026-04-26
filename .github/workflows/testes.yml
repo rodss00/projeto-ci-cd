@@ -1,0 +1,21 @@
+name: Testes Automatizados
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v3
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Instalar ferramenta de testes
+        run: pip install pytest
+      - name: Rodar os testes
+        run: pytest test_calculadora.py
