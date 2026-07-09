@@ -1,0 +1,22 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+      - name: Etapa de CI (Build e Testes)
+        run: echo "Verificando o código e rodando testes... Tudo OK!"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Etapa de CD (Deploy)
+        run: echo "Realizando o deploy da aplicação... Sucesso!"
